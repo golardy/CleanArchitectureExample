@@ -18,5 +18,15 @@ namespace CleanArchitectureExample.Domain.Products
             Price = price;
             Sku = sku;
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Product"/> class.
+        /// </summary>
+        /// <remarks>
+        /// Required by EF Core.
+        /// </remarks>
+        private Product()
+        {
+        }
     }
 }

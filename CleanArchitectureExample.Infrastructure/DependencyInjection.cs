@@ -34,28 +34,6 @@ namespace CleanArchitectureExample.Infrastructure
                             Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"]))
                 });
 
-            /*services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SettingsKey));
-
-            services.Configure<MailSettings>(configuration.GetSection(MailSettings.SettingsKey));
-
-            services.Configure<MessageBrokerSettings>(configuration.GetSection(MessageBrokerSettings.SettingsKey));
-
-            services.AddScoped<IUserIdentifierProvider, UserIdentifierProvider>();
-
-            services.AddScoped<IJwtProvider, JwtProvider>();
-
-            services.AddTransient<IDateTime, MachineDateTime>();
-
-            services.AddTransient<IPasswordHasher, PasswordHasher>();
-
-            services.AddTransient<IPasswordHashChecker, PasswordHasher>();
-
-            services.AddTransient<IEmailService, EmailService>();
-
-            services.AddTransient<IEmailNotificationService, EmailNotificationService>();
-
-            services.AddSingleton<IIntegrationEventPublisher, IntegrationEventPublisher>();*/
-
             string connectionString = configuration.GetConnectionString(ConnectionString.SettingsKey);
 
             services.AddSingleton(new ConnectionString(connectionString));
