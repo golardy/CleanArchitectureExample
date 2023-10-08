@@ -36,3 +36,9 @@
 /CleanArchitectureExample.Infrastructure/obj/Debug/net7.0/CleanArchitectureExample.Infrastructure.pdb
 /CleanArchitectureExample.Infrastructure/obj/project.assets.json
 /CleanArchitectureExample.Infrastructure/obj/project.nuget.cache
+/.vs/CleanArchitectureExample/FileContentIndex/read.lock
+/.vs/CleanArchitectureExample/v17
+/CleanArchitectureExample.Application
+/CleanArchitectureExample.Domain
+/CleanArchitectureExample.Infrastructure/bin/Debug/net7.0
+/Web.API
