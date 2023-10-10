@@ -24,3 +24,7 @@
 *.exe
 *.props
 *.json
+*.targets
+*.bin
+*.v2
+*.config
