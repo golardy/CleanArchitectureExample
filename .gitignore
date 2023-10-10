@@ -28,3 +28,4 @@
 *.bin
 *.v2
 *.config
+/Web.API/Web.API.csproj.user
