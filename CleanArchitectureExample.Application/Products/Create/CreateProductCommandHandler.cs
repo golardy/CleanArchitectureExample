@@ -1,4 +1,4 @@
-﻿using CleanArchitectureExample.Application.Common.Interfaces;
+﻿using CleanArchitectureExample.Application.Core.Abstractions.Data;
 using CleanArchitectureExample.Domain.Primitives;
 using CleanArchitectureExample.Domain.Products;
 using MediatR;
@@ -18,13 +18,13 @@ namespace CleanArchitectureExample.Application.Products.Create
 
         public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            var prodcut = new Product(
+            var product = new Product(
                 new ProductId(Guid.NewGuid()),
                 request.Name,
                 new Money(request.Currency, request.Amount),
                 Sku.Create(request.Sku)!);
 
-            _productRepository.Add(prodcut);
+            _productRepository.Add(product);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 

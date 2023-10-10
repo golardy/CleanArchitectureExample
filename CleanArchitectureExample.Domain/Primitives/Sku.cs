@@ -20,5 +20,7 @@
 
             return new Sku(value);
         }
+
+        public Sku() { }
     }
 }

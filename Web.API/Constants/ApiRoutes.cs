@@ -5,9 +5,15 @@
     /// </summary>
     internal static class ApiRoutes
     {
-        /// <summary>
-        /// The create product route.
-        /// </summary>
-        internal const string CreateProduct = "product";
+        internal static class Product
+        {
+            internal const string Create = "Product";
+        }
+
+        internal static class Authentication
+        {
+            internal const string Login = "Login";
+            internal const string Register = "Register";
+        }
     }
 }

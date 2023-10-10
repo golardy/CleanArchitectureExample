@@ -1,4 +1,9 @@
-﻿using CleanArchitectureExample.Application.Common.Interfaces;
+﻿using CleanArchitectureExample.Application.Core.Abstractions.Authentication;
+using CleanArchitectureExample.Application.Core.Abstractions.Common;
+using CleanArchitectureExample.Application.Core.Abstractions.Data;
+using CleanArchitectureExample.Domain.Services;
+using CleanArchitectureExample.Infrastructure.Authentication.Settings;
+using CleanArchitectureExample.Infrastructure.Authentication;
 using CleanArchitectureExample.Infrastructure.Persistence;
 using CleanArchitectureExample.Infrastructure.Persistence.Context;
 using CleanArchitectureExample.Infrastructure.Persistence.Repository;
@@ -8,6 +13,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CleanArchitectureExample.Infrastructure.Cryptography;
+using CleanArchitectureExample.Application.Core.Abstractions.Cryptography;
+using CleanArchitectureExample.Infrastructure.Common;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace CleanArchitectureExample.Infrastructure
 {
@@ -34,6 +44,14 @@ namespace CleanArchitectureExample.Infrastructure
                             Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"]))
                 });
 
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SettingsKey));
+
+            services.AddScoped<IUserIdentifierProvider, UserIdentifierProvider>();
+
+            services.AddScoped<IJwtProvider, JwtProvider>();
+
             string connectionString = configuration.GetConnectionString(ConnectionString.SettingsKey);
 
             services.AddSingleton(new ConnectionString(connectionString));
@@ -43,6 +61,14 @@ namespace CleanArchitectureExample.Infrastructure
             services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<IProductRepository, ProductRepository>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddTransient<IDateTime, MachineDateTime>();
+
+            services.AddTransient<IPasswordHasher, PasswordHasher>();
+
+            services.AddTransient<IPasswordHashChecker, PasswordHasher>();
 
             return services;
         }

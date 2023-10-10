@@ -8,8 +8,6 @@ using Web.API.Infrastructure;
 
 namespace Web.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class ProductController : ApiController
     {
         public ProductController(ISender sender)
@@ -17,7 +15,7 @@ namespace Web.API.Controllers
         {
         }
 
-        [HttpPost(ApiRoutes.CreateProduct)]
+        [HttpPost(ApiRoutes.Product.Create)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status400BadRequest)]
         public async Task<IResult> Create([FromBody] CreateProductRequest createProductRequest, CancellationToken cancellationToken)

@@ -1,4 +1,4 @@
-﻿using CleanArchitectureExample.Application.Common.Interfaces;
+﻿using CleanArchitectureExample.Application.Core.Abstractions.Data;
 using CleanArchitectureExample.Domain.Primitives;
 using CleanArchitectureExample.Domain.Products;
 using CleanArchitectureExample.Infrastructure.Persistence.Context;
@@ -11,9 +11,12 @@ namespace CleanArchitectureExample.Infrastructure.Persistence.Repository
         private readonly ApplicationDbContext _applicationDbContext;
         public ProductRepository(ApplicationDbContext applicationDbContext) => _applicationDbContext = applicationDbContext;
 
-        public void Add(Product product) => _applicationDbContext.Set<Product>().Add(product);
+        public void Add(Product product)
+        {
+            _applicationDbContext.Set<Product>().Add(product);
+        }
 
-        public async Task<Product> GetByIdAsync(ProductId id)
+        public async Task<Product?> GetByIdAsync(ProductId id)
         {
             return await _applicationDbContext.Set<Product>().FirstOrDefaultAsync(x => x.Id == id);
         }

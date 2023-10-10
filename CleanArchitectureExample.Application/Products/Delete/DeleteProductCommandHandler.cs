@@ -1,4 +1,4 @@
-﻿using CleanArchitectureExample.Application.Common.Interfaces;
+﻿using CleanArchitectureExample.Application.Core.Abstractions.Data;
 using CleanArchitectureExample.Domain.Products;
 using MediatR;
 

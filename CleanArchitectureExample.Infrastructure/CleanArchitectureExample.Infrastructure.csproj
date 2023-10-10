@@ -20,8 +20,4 @@
     <ProjectReference Include="..\CleanArchitectureExample.Application\CleanArchitectureExample.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Persistence\Migrations\" />
-  </ItemGroup>
-
 </Project>

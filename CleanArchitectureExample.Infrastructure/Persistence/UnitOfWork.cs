@@ -1,5 +1,6 @@
-﻿using CleanArchitectureExample.Application.Common.Interfaces;
+﻿using CleanArchitectureExample.Application.Core.Abstractions.Data;
 using CleanArchitectureExample.Infrastructure.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitectureExample.Infrastructure.Persistence
 {
@@ -13,6 +14,8 @@ namespace CleanArchitectureExample.Infrastructure.Persistence
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
+            var cs = _applicationDBContext.Database.GetDbConnection().ConnectionString;
+
             return await _applicationDBContext.SaveChangesAsync(cancellationToken);
         }
     }
