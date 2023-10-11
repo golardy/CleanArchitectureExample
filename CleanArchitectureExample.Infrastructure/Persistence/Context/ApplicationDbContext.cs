@@ -17,12 +17,5 @@ namespace CleanArchitectureExample.Infrastructure.Persistence.Context
 
             base.OnModelCreating(builder);
         }
-
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            var cs = base.Database.GetDbConnection().ConnectionString;
-
-            return await base.SaveChangesAsync(cancellationToken);
-        }
     }
 }

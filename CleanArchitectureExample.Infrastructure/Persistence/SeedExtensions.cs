@@ -21,12 +21,12 @@ namespace CleanArchitectureExample.Infrastructure.Persistence
                     new ProductId(Guid.NewGuid()),
                     "T-Shirt",
                     new Money("USD", 15),
-                    Sku.Create("XL")),
+                    Sku.Create("XL123456")),
                 new Product(
                     new ProductId(Guid.NewGuid()),
                     "Trousers",
                     new Money("USD", 115),
-                    Sku.Create("XL"))
+                    Sku.Create("XL123456"))
             });
 
             dbContext.SaveChanges();
